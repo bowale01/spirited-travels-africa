@@ -13,7 +13,7 @@ import {
 
 const { width } = Dimensions.get('window');
 
-export default function TripsScreen({ user, client }) {
+export default function TripsScreen() {
   const [trips, setTrips] = useState([]);
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [selectedTab, setSelectedTab] = useState('current'); // current, past, planned

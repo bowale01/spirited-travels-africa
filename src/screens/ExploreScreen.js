@@ -34,7 +34,7 @@ const ACTIVITY_CATEGORIES = [
   { id: 'music', name: 'Music & Festivals', emoji: '🎵', count: 127 },
 ];
 
-export default function ExploreScreen({ user, client }) {
+export default function ExploreScreen() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [destinations, setDestinations] = useState([]);

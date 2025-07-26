@@ -2,19 +2,17 @@ import React from 'react';
 import { 
   SafeAreaView, 
   StyleSheet, 
-  Text, 
-  View, 
   StatusBar 
 } from 'react-native';
 
-// Import your app components
-import SpiritedTravelsApp from './src/SpiritedTravelsApp';
+// Import clean test app
+import CleanTestApp from './CleanTestApp';
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="dark-content" backgroundColor="#fff" />
-      <SpiritedTravelsApp />
+      <StatusBar barStyle="light-content" backgroundColor="#1A1A1A" />
+      <CleanTestApp />
     </SafeAreaView>
   );
 }

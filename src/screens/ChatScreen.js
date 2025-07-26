@@ -10,7 +10,7 @@ import {
   Alert,
 } from 'react-native';
 
-export default function ChatScreen({ user, client }) {
+export default function ChatScreen() {
   const [connections, setConnections] = useState([]);
   const [selectedConnection, setSelectedConnection] = useState(null);
   const [messages, setMessages] = useState([]);

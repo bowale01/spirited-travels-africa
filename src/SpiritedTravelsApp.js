@@ -12,12 +12,19 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
-// Import your screens
-import HomeScreen from './screens/HomeScreen';
-import ExploreScreen from './screens/ExploreScreen';
-import TripsScreen from './screens/TripsScreen';
-import ChatScreen from './screens/ChatScreen';
-import ProfileScreen from './screens/ProfileScreen';
+// Import your screens - TEMPORARILY DISABLED TO PREVENT AMPLIFY ERRORS
+// import HomeScreen from './screens/SimpleHomeScreen';
+// import ExploreScreen from './screens/ExploreScreen';
+// import TripsScreen from './screens/TripsScreen';
+// import ChatScreen from './screens/ChatScreen';
+// import ProfileScreen from './screens/ProfileScreen';
+
+// Temporary placeholder components
+const HomeScreen = () => <Text style={{color: '#FF8C42', fontSize: 24, textAlign: 'center', marginTop: 50}}>🏠 Home</Text>;
+const ExploreScreen = () => <Text style={{color: '#FF8C42', fontSize: 24, textAlign: 'center', marginTop: 50}}>🔍 Explore</Text>;
+const TripsScreen = () => <Text style={{color: '#FF8C42', fontSize: 24, textAlign: 'center', marginTop: 50}}>✈️ Trips</Text>;
+const ChatScreen = () => <Text style={{color: '#FF8C42', fontSize: 24, textAlign: 'center', marginTop: 50}}>💬 Chat</Text>;
+const ProfileScreen = () => <Text style={{color: '#FF8C42', fontSize: 24, textAlign: 'center', marginTop: 50}}>👤 Profile</Text>;
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();

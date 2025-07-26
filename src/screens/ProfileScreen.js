@@ -11,7 +11,7 @@ import {
   TextInput,
 } from 'react-native';
 
-export default function ProfileScreen({ user, client, signOut }) {
+export default function ProfileScreen() {
   const [userProfile, setUserProfile] = useState(null);
   const [showEditModal, setShowEditModal] = useState(false);
   const [editForm, setEditForm] = useState({

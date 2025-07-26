@@ -12,7 +12,7 @@ import {
 
 const { width } = Dimensions.get('window');
 
-export default function HomeScreen({ user, client }) {
+export default function HomeScreen() {
   const [userProfile, setUserProfile] = useState(null);
   const [potentialMatches, setPotentialMatches] = useState([]);
   const [popularDestinations, setPopularDestinations] = useState([]);
@@ -24,27 +24,77 @@ export default function HomeScreen({ user, client }) {
 
   const loadDashboardData = async () => {
     try {
-      // Load user profile
-      const profiles = await client.models.UserProfile.list({
-        filter: { userId: { eq: user.userId } }
+      // Mock user profile data
+      setUserProfile({
+        name: 'Adventure Seeker',
+        location: 'Cape Town, South Africa',
+        tripsCompleted: 3,
+        connectionsLead: 12
       });
-      if (profiles.data.length > 0) {
-        setUserProfile(profiles.data[0]);
-      }
 
-      // Load potential travel matches
-      const matches = await client.models.TripMatch.list({
-        filter: { userId: { eq: user.userId } },
-        limit: 5
-      });
-      setPotentialMatches(matches.data);
+      // Mock potential travel matches
+      setPotentialMatches([
+        {
+          id: '1',
+          name: 'Sarah Kenya Explorer',
+          destination: 'Masai Mara, Kenya',
+          travelDates: 'March 15-25, 2024',
+          sharedInterests: ['Safari', 'Photography'],
+          profileImage: '🦁'
+        },
+        {
+          id: '2', 
+          name: 'Marcus Culture Fan',
+          destination: 'Marrakech, Morocco',
+          travelDates: 'April 5-15, 2024',
+          sharedInterests: ['Culture', 'Food'],
+          profileImage: '🕌'
+        },
+        {
+          id: '3',
+          name: 'Zara Adventure',
+          destination: 'Victoria Falls, Zambia',
+          travelDates: 'May 10-20, 2024', 
+          sharedInterests: ['Adventure', 'Nature'],
+          profileImage: '🌊'
+        }
+      ]);
 
-      // Load popular African destinations
-      const destinations = await client.models.Destination.list({
-        filter: { isPopular: { eq: true } },
-        limit: 10
-      });
-      setPopularDestinations(destinations.data);
+      // Mock popular African destinations
+      setPopularDestinations([
+        {
+          id: '1',
+          name: 'Serengeti National Park',
+          country: 'Tanzania',
+          image: '🦓',
+          description: 'Witness the Great Migration',
+          rating: 4.9
+        },
+        {
+          id: '2',
+          name: 'Table Mountain',
+          country: 'South Africa', 
+          image: '⛰️',
+          description: 'Iconic Cape Town landmark',
+          rating: 4.8
+        },
+        {
+          id: '3',
+          name: 'Pyramids of Giza',
+          country: 'Egypt',
+          image: '🏺',
+          description: 'Ancient wonders of the world',
+          rating: 4.7
+        },
+        {
+          id: '4',
+          name: 'Okavango Delta',
+          country: 'Botswana',
+          image: '🦛',
+          description: 'UNESCO World Heritage wetland',
+          rating: 4.9
+        }
+      ]);
 
     } catch (error) {
       console.error('Error loading dashboard data:', error);
