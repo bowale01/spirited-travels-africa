@@ -1,0 +1,31 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - echo Installing dependencies
+      - npm install -g @expo/cli
+      - npm install
+      
+  pre_build:
+    commands:
+      - echo Pre-build phase started on `date`
+      - echo Setting up Expo environment
+      
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building React Native app for Android
+      - npx expo build:android --type apk --non-interactive
+      - echo Build completed on `date`
+      
+  post_build:
+    commands:
+      - echo Post-build phase completed on `date`
+      
+artifacts:
+  files:
+    - '**/*'
+  name: spirited-travels-africa-$(date +%Y-%m-%d)

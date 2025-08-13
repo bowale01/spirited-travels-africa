@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spirited Travels Africa - Download App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff6b35, #f7931e, #ffd700);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            backdrop-filter: blur(10px);
+        }
+        
+        .logo {
+            font-size: 3em;
+            margin-bottom: 10px;
+            color: #ff6b35;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            font-weight: 600;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.2em;
+        }
+        
+        .download-section {
+            margin-bottom: 30px;
+        }
+        
+        .download-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: 600;
+            margin: 10px 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+            min-width: 200px;
+        }
+        
+        .download-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+        }
+        
+        .platform-icon {
+            font-size: 1.3em;
+            margin-right: 10px;
+        }
+        
+        .info-section {
+            background: rgba(255, 107, 53, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        
+        .info-section h3 {
+            color: #ff6b35;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        
+        .info-list {
+            list-style: none;
+            text-align: left;
+            display: inline-block;
+        }
+        
+        .info-list li {
+            color: #555;
+            margin: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .info-list li::before {
+            content: "✈️";
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .version-info {
+            background: rgba(247, 147, 30, 0.1);
+            border-left: 4px solid #f7931e;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .expire-notice {
+            background: rgba(255, 193, 7, 0.1);
+            border: 1px solid #ffc107;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            color: #856404;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .download-button {
+                display: block;
+                margin: 15px auto;
+                max-width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🌍</div>
+        <h1>Spirited Travels Africa</h1>
+        <p class="subtitle">Discover the Beauty of Africa</p>
+        
+        <div class="download-section">
+            <h3 style="color: #333; margin-bottom: 25px;">Download Our Mobile App</h3>
+            
+            <a href="https://spirited-travels-africa-mobile-app.s3.us-east-1.amazonaws.com/installers/android/_expo/static/js/android/index-00bdb6331d075d91c22848404a0ad2f2.hbc?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA22HEHZFGEUSVLFHV%2F20250727%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250727T001908Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=d42645dcc323ae7c683157f46f476409c1f0dcc0ccbb7007470fb9eb06f92eb0" class="download-button">
+                <span class="platform-icon">🤖</span>
+                Download for Android
+            </a>
+            
+            <a href="https://spirited-travels-africa-mobile-app.s3.us-east-1.amazonaws.com/installers/ios/_expo/static/js/ios/index-7fc52d83398713ed6d163c11000964e8.hbc?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA22HEHZFGEUSVLFHV%2F20250727%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250727T001916Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=53ae3eefb7eec6a7dec5cf04a2c5565684061d22bc8b3d2619da57f08efebc1a" class="download-button">
+                <span class="platform-icon">🍎</span>
+                Download for iOS
+            </a>
+        </div>
+        
+        <div class="version-info">
+            <strong>Version:</strong> 1.0.0 | <strong>Size:</strong> ~1.7MB | <strong>Last Updated:</strong> July 2025
+        </div>
+        
+        <div class="expire-notice">
+            <strong>⚠️ Download Links Valid Until:</strong> August 3, 2025<br>
+            <small>These are temporary download links. For permanent access, please contact the developer.</small>
+        </div>
+        
+        <div class="info-section">
+            <h3>✨ App Features</h3>
+            <ul class="info-list">
+                <li>Beautiful African-inspired design</li>
+                <li>Explore stunning destinations</li>
+                <li>Plan your perfect trip</li>
+                <li>Discover hidden gems</li>
+                <li>Connect with local culture</li>
+                <li>Save your favorite places</li>
+            </ul>
+        </div>
+        
+        <div style="margin-top: 30px; color: #888; font-size: 0.9em;">
+            © 2025 Spirited Travels Africa. All rights reserved.
+        </div>
+    </div>
+</body>
+</html>

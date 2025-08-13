@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "SpiritedTravelsAfrica",
-    "slug": "SpiritedTravelsAfrica",
+    "name": "Spirited Travels Africa",
+    "slug": "spirited-travels-africa",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -10,20 +10,54 @@
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#FF8C42"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.spiritedtravels.africa",
+      "buildNumber": "1.0.0",
+      "infoPlist": {
+        "UILaunchStoryboardName": "SplashScreen",
+        "UIRequiredDeviceCapabilities": [
+          "armv7"
+        ],
+        "UISupportedInterfaceOrientations": [
+          "UIInterfaceOrientationPortrait",
+          "UIInterfaceOrientationPortraitUpsideDown"
+        ],
+        "UIUserInterfaceStyle": "Light",
+        "NSLocationWhenInUseUsageDescription": "This app uses location to provide travel recommendations for Africa.",
+        "NSCameraUsageDescription": "This app uses camera to capture your travel moments in Africa.",
+        "NSPhotoLibraryUsageDescription": "This app accesses photo library to share your travel experiences."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#FF8C42"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.spiritedtravels.africa",
+      "versionCode": 1,
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "32bf3c2b-36b6-4460-b972-95d54f08ee39"
+      }
+    },
+    "plugins": [
+      "expo-build-properties"
+    ],
+    "owner": "debolek"
   }
 }

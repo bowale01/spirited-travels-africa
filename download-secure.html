@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spirited Travels Africa - Secure Download</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FF6B35, #F7931E, #FFD23F);
+            color: white;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            background: rgba(0,0,0,0.3);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .subtitle {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        .download-section {
+            margin: 30px 0;
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+        .download-btn.android {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+        }
+        .download-btn.ios {
+            background: linear-gradient(45deg, #007AFF, #0056CC);
+        }
+        .security-badge {
+            background: rgba(0,255,0,0.2);
+            padding: 10px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid rgba(0,255,0,0.3);
+        }
+        .url-info {
+            background: rgba(0,0,0,0.3);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌍 Spirited Travels Africa</h1>
+        <p class="subtitle">Your African Adventure Companion - Now with Enhanced Security</p>
+        
+        <div class="security-badge">
+            🔒 <strong>Secure Downloads</strong> - Protected by AWS CloudFront Global CDN
+        </div>
+
+        <div class="download-section">
+            <h2>📱 Download the App</h2>
+            <p>Experience the beauty of Africa with our travel companion app</p>
+            
+            <a href="installers/android/" class="download-btn android">
+                📱 Download for Android
+            </a>
+            
+            <a href="installers/ios/" class="download-btn ios">
+                🍎 Download for iOS
+            </a>
+        </div>
+
+        <div class="download-section">
+            <h2>🔗 Secure URLs</h2>
+            <p>Share these secure, professional URLs:</p>
+            
+            <div class="url-info">
+                <strong>Main Page:</strong><br>
+                https://d3oizrvu0zqcqz.cloudfront.net/
+            </div>
+            
+            <div class="url-info">
+                <strong>Android Direct:</strong><br>
+                https://d3oizrvu0zqcqz.cloudfront.net/installers/android/
+            </div>
+            
+            <div class="url-info">
+                <strong>iOS Direct:</strong><br>
+                https://d3oizrvu0zqcqz.cloudfront.net/installers/ios/
+            </div>
+        </div>
+
+        <div class="download-section">
+            <h2>✨ What's New</h2>
+            <ul style="text-align: left; max-width: 400px; margin: 0 auto;">
+                <li>🔒 Enhanced security with AWS CloudFront</li>
+                <li>🌍 Faster downloads worldwide</li>
+                <li>🛡️ Protected infrastructure</li>
+                <li>📊 Better download analytics</li>
+                <li>🚀 Professional CDN distribution</li>
+            </ul>
+        </div>
+
+        <p style="margin-top: 40px; opacity: 0.8;">
+            Built with ❤️ for African travelers | Powered by AWS
+        </p>
+    </div>
+
+    <script>
+        // Add some interactivity
+        document.querySelectorAll('.download-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Analytics tracking could go here
+                console.log('Download started:', this.textContent);
+            });
+        });
+    </script>
+</body>
+</html>

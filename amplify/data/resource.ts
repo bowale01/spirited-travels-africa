@@ -1,11 +1,6 @@
 import { type ClientSchema, a, defineData } from '@aws-amplify/backend';
 
-/*== SPIRITED TRAVELS AFRICA - TRAVEL COMPANION APP =====================
-Schema for Africa-focused travel companion app where users can connect
-based on shared travel destinations and interests.
-=========================================================================*/
 const schema = a.schema({
-  // User Profile with travel preferences and interests
   UserProfile: a
     .model({
       userId: a.string().required(),
@@ -14,199 +9,165 @@ const schema = a.schema({
       firstName: a.string(),
       lastName: a.string(),
       bio: a.string(),
-      profilePicture: a.string(), // S3 URL
+      profilePicture: a.string(),
       dateOfBirth: a.date(),
       country: a.string(),
       city: a.string(),
-      languages: a.string().array(), // ["English", "French", "Swahili"]
-      interests: a.string().array(), // ["Wildlife", "Culture", "Adventure", "Food"]
+      languages: a.string().array(),
+      interests: a.string().array(),
       travelStyle: a.enum(['Budget', 'Luxury', 'Backpacker', 'Cultural', 'Adventure']),
       isVerified: a.boolean().default(false),
       createdAt: a.datetime(),
       updatedAt: a.datetime(),
-      // Relations
-      trips: a.hasMany('Trip', 'userId'),
-      sentConnections: a.hasMany('Connection', 'fromUserId'),
-      receivedConnections: a.hasMany('Connection', 'toUserId'),
-      sentMessages: a.hasMany('Message', 'senderId'),
-      receivedMessages: a.hasMany('Message', 'receiverId'),
     })
     .authorization((allow) => [
       allow.owner(),
       allow.authenticated().to(['read']),
     ]),
 
-  // Trip plans for destinations in Africa
   Trip: a
     .model({
       userId: a.string().required(),
       title: a.string().required(),
       description: a.string(),
-      country: a.string().required(), // African country
+      country: a.string().required(),
       city: a.string(),
-      region: a.string(), // e.g., "East Africa", "West Africa"
+      region: a.string(),
       startDate: a.date().required(),
       endDate: a.date().required(),
       budget: a.float(),
-      currency: a.string().default('USD'),
+      currency: a.string().default("USD"),
       groupSize: a.integer().default(1),
       tripType: a.enum(['Solo', 'Couple', 'Group', 'Family']),
-      activities: a.string().array(), // ["Safari", "Beach", "Mountain Climbing", "Cultural Tours"]
-      accommodation: a.enum(['Budget', 'Mid-range', 'Luxury', 'Hostel', 'Camping']),
-      transportation: a.string().array(), // ["Flight", "Bus", "Car Rental", "Train"]
+      activities: a.string().array(),
+      accommodation: a.enum(['Budget', 'Midrange', 'Luxury', 'Hostel', 'Camping']),
+      transportation: a.string().array(),
       isPublic: a.boolean().default(true),
       status: a.enum(['Planning', 'Active', 'Completed', 'Cancelled']),
       latitude: a.float(),
       longitude: a.float(),
       createdAt: a.datetime(),
       updatedAt: a.datetime(),
-      // Relations
-      user: a.belongsTo('UserProfile', 'userId'),
-      matches: a.hasMany('TripMatch', 'tripId'),
     })
     .authorization((allow) => [
       allow.owner(),
       allow.authenticated().to(['read']),
     ]),
 
-  // Connections/Matches between users with similar interests and destinations
   Connection: a
     .model({
       fromUserId: a.string().required(),
       toUserId: a.string().required(),
       status: a.enum(['Pending', 'Accepted', 'Declined', 'Blocked']),
-      matchScore: a.float(), // Algorithm-generated compatibility score
+      matchScore: a.float(),
       commonInterests: a.string().array(),
       commonDestinations: a.string().array(),
-      connectionReason: a.string(), // Why they were matched
+      connectionReason: a.string(),
       createdAt: a.datetime(),
       updatedAt: a.datetime(),
-      // Relations
-      fromUser: a.belongsTo('UserProfile', 'fromUserId'),
-      toUser: a.belongsTo('UserProfile', 'toUserId'),
-    })
-    .authorization((allow) => [
-      allow.owner(),
-      allow.custom(),
-    ]),
-
-  // Trip matching system
-  TripMatch: a
-    .model({
-      tripId: a.string().required(),
-      matchedTripId: a.string().required(),
-      userId: a.string().required(),
-      matchedUserId: a.string().required(),
-      matchScore: a.float().required(),
-      commonActivities: a.string().array(),
-      overlappingDates: a.boolean().default(false),
-      sameDestination: a.boolean().default(false),
-      compatibilityFactors: a.string().array(),
-      createdAt: a.datetime(),
-      // Relations
-      trip: a.belongsTo('Trip', 'tripId'),
-      user: a.belongsTo('UserProfile', 'userId'),
     })
     .authorization((allow) => [
       allow.owner(),
       allow.authenticated().to(['read']),
     ]),
 
-  // Real-time messaging between connected users
   Message: a
     .model({
       senderId: a.string().required(),
       receiverId: a.string().required(),
       content: a.string().required(),
-      messageType: a.enum(['Text', 'Image', 'Location', 'Trip_Invitation']),
+      messageType: a.enum(['Text', 'Image', 'Location', 'TripInvitation']),
       isRead: a.boolean().default(false),
       readAt: a.datetime(),
-      tripId: a.string(), // Optional: if message is about a specific trip
-      attachmentUrl: a.string(), // S3 URL for images/files
+      tripId: a.string(),
+      attachmentUrl: a.string(),
       createdAt: a.datetime(),
-      // Relations
-      sender: a.belongsTo('UserProfile', 'senderId'),
-      receiver: a.belongsTo('UserProfile', 'receiverId'),
     })
     .authorization((allow) => [
       allow.owner(),
-      allow.custom(),
+      allow.authenticated().to(['read']),
     ]),
 
-  // African destinations and points of interest
+  TripMatch: a
+    .model({
+      userId: a.string().required(),
+      matchedUserId: a.string().required(),
+      tripId: a.string().required(),
+      matchScore: a.float().required(),
+      status: a.enum(['Pending', 'Accepted', 'Declined', 'Expired']),
+      commonInterests: a.string().array(),
+      compatibilityFactors: a.string().array(),
+      createdAt: a.datetime().required(),
+      expiresAt: a.datetime().required()
+    })
+    .authorization((allow) => [
+      allow.owner(),
+      allow.authenticated().to(['read']),
+    ]),
+
   Destination: a
     .model({
       name: a.string().required(),
       country: a.string().required(),
-      region: a.string().required(), // East, West, North, South, Central Africa
-      city: a.string(),
-      description: a.string(),
-      category: a.enum(['Safari', 'Beach', 'Mountain', 'Cultural', 'Historical', 'Urban', 'Desert']),
-      activities: a.string().array(),
-      bestTimeToVisit: a.string().array(), // ["Dec-Mar", "Jun-Sep"]
-      averageBudget: a.float(),
-      difficulty: a.enum(['Easy', 'Moderate', 'Challenging', 'Expert']),
+      region: a.string().required(),
       latitude: a.float().required(),
       longitude: a.float().required(),
+      description: a.string(),
+      averageRating: a.float().default(0),
+      totalReviews: a.integer().default(0),
+      categories: a.string().array(),
+      bestTimeToVisit: a.string(),
+      estimatedCost: a.enum(['Budget', 'Midrange', 'Luxury']),
+      popularActivities: a.string().array(),
+      weatherInfo: a.string(),
+      travelTips: a.string().array(),
       imageUrls: a.string().array(),
-      rating: a.float().default(0),
-      reviewCount: a.integer().default(0),
-      isPopular: a.boolean().default(false),
-      createdAt: a.datetime(),
-      updatedAt: a.datetime(),
+      createdAt: a.datetime().required(),
+      updatedAt: a.datetime()
     })
     .authorization((allow) => [
+      allow.owner(),
       allow.authenticated().to(['read']),
-      allow.groups(['admin']).to(['create', 'update', 'delete']),
     ]),
 
-  // Reviews and recommendations for destinations
   Review: a
     .model({
       userId: a.string().required(),
       destinationId: a.string().required(),
-      tripId: a.string(),
-      rating: a.integer().required(), // 1-5 stars
-      title: a.string(),
+      rating: a.integer().required(),
+      title: a.string().required(),
       content: a.string().required(),
-      photos: a.string().array(), // S3 URLs
-      travelDate: a.date(),
-      travelDuration: a.integer(), // days
-      budgetSpent: a.float(),
-      wouldRecommend: a.boolean().default(true),
-      tips: a.string(),
-      isVerified: a.boolean().default(false),
-      helpfulCount: a.integer().default(0),
-      createdAt: a.datetime(),
-      updatedAt: a.datetime(),
-      // Relations
-      user: a.belongsTo('UserProfile', 'userId'),
+      visitDate: a.date(),
+      tripType: a.enum(['Solo', 'Couple', 'Family', 'Friends', 'Business']),
+      photos: a.string().array(),
+      helpfulVotes: a.integer().default(0),
+      verified: a.boolean().default(false),
+      tags: a.string().array(),
+      createdAt: a.datetime().required(),
+      updatedAt: a.datetime()
     })
     .authorization((allow) => [
       allow.owner(),
       allow.authenticated().to(['read']),
     ]),
 
-  // Subscription plans for premium features
-  Subscription: a
+  UserSubscription: a
     .model({
       userId: a.string().required(),
-      planType: a.enum(['Free', 'Premium', 'VIP']).required(),
-      status: a.enum(['Active', 'Cancelled', 'Expired', 'Suspended']),
-      startDate: a.date().required(),
-      endDate: a.date(),
-      price: a.float(),
-      currency: a.string().default('EUR'),
+      planType: a.enum(['Free', 'Premium', 'Enterprise']),
+      status: a.enum(['Active', 'Cancelled', 'Expired', 'Trial']),
+      startDate: a.datetime().required(),
+      endDate: a.datetime(),
+      features: a.string().array(),
       paymentMethod: a.string(),
-      features: a.string().array(), // ["Unlimited_Matches", "Priority_Support", "Advanced_Filters"]
       autoRenew: a.boolean().default(true),
-      createdAt: a.datetime(),
-      updatedAt: a.datetime(),
-      // Relations
-      user: a.belongsTo('UserProfile', 'userId'),
+      trialUsed: a.boolean().default(false),
+      createdAt: a.datetime().required(),
+      updatedAt: a.datetime()
     })
     .authorization((allow) => [
       allow.owner(),
+      allow.authenticated().to(['read']),
     ]),
 });
 
@@ -221,34 +182,3 @@ export const data = defineData({
     },
   },
 });
-
-/*== FRONTEND USAGE ======================================================
-Use this in your React Native components:
-
-import { generateClient } from "aws-amplify/data";
-import type { Schema } from "@/amplify/data/resource";
-
-const client = generateClient<Schema>();
-
-// Example: Create user profile
-await client.models.UserProfile.create({
-  userId: user.userId,
-  username: "traveler123",
-  email: "user@example.com",
-  interests: ["Safari", "Culture", "Adventure"],
-  travelStyle: "Adventure"
-});
-
-// Example: Search for trips to Kenya
-const kenyaTrips = await client.models.Trip.list({
-  filter: { country: { eq: "Kenya" } }
-});
-
-// Example: Find travel matches
-const matches = await client.models.TripMatch.list({
-  filter: { userId: { eq: currentUserId } }
-});
-=========================================================================*/
-// const { data: todos } = await client.models.Todo.list()
-
-// return <ul>{todos.map(todo => <li key={todo.id}>{todo.content}</li>)}</ul>

@@ -1,0 +1,32 @@
+{
+  "app": {
+    "name": "Spirited Travels Africa",
+    "version": "1.0.0",
+    "description": "Discover the beauty of Africa with our comprehensive travel companion app",
+    "website": "https://spirited-travels-africa-mobile-app.s3.us-east-1.amazonaws.com/download.html",
+    "privacy_policy": "https://spirited-travels-africa-mobile-app.s3.us-east-1.amazonaws.com/privacy.html",
+    "support_email": "support@spiritedtravelsafrica.com"
+  },
+  "android": {
+    "package_name": "com.spiritedtravels.africa",
+    "category": "Travel & Local",
+    "content_rating": "Everyone",
+    "target_sdk": 34,
+    "min_sdk": 21,
+    "build_path": "./store-builds/android-production/",
+    "bundle_size": "1.03 MB"
+  },
+  "ios": {
+    "bundle_identifier": "com.spiritedtravels.africa",
+    "category": "Travel",
+    "content_rating": "4+",
+    "target_ios": "14.0",
+    "build_path": "./store-builds/ios-production/",
+    "bundle_size": "1.03 MB"
+  },
+  "store_assets": {
+    "short_description": "Explore Africa's beauty - travel companion app",
+    "long_description": "🌍 Spirited Travels Africa - Your Gateway to African Adventures\n\nDiscover the breathtaking beauty of Africa with our comprehensive travel companion app. From the ancient wonders of Egypt to the wildlife safaris of Kenya, embark on an unforgettable journey through the most captivating destinations across the continent.\n\n✨ Features:\n• Explore stunning African destinations\n• Beautiful sunset-themed interface\n• Cultural insights and travel tips\n• Save your favorite locations\n• Plan your perfect African adventure\n\n🦁 Destinations Include:\n• Egypt's ancient pyramids and history\n• Kenya's incredible wildlife safaris\n• South Africa's diverse landscapes\n• Morocco's vibrant markets\n• And many more hidden gems\n\nDownload now and let your African journey begin! 🚀",
+    "keywords": "africa, travel, tourism, safari, adventure, culture, destinations, exploration"
+  }
+}

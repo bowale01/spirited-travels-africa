@@ -1,0 +1,22 @@
+# AWS IAM Policy Update for Amplify Gen 2 Deployment
+# Run these commands to grant necessary permissions for Amplify backend deployment
+
+# 1. Create the policy for Amplify deployment
+aws iam create-policy --policy-name AmplifyGen2DeploymentPolicy --policy-document file://amplify-deployment-policy.json --description "Policy for Amplify Gen 2 backend deployment with CDK"
+
+# 2. Attach the policy to your user
+aws iam attach-user-policy --user-name spirited_travel_Africa --policy-arn arn:aws:iam::743508003148:policy/AmplifyGen2DeploymentPolicy
+
+# 3. Also need to bootstrap CDK in your account (if not already done)
+npx cdk bootstrap aws://743508003148/us-east-1
+
+# 4. Verify permissions work
+aws ssm get-parameter --name "/cdk-bootstrap/hnb659fds/version" --region us-east-1
+
+# 5. After permissions are updated, retry the Amplify deployment
+npx @aws-amplify/backend-cli sandbox --dir-to-watch amplify
+
+# Alternative: If the above policy is too broad, you can use AWS managed policies:
+# aws iam attach-user-policy --user-name spirited_travel_Africa --policy-arn arn:aws:iam::aws:policy/AWSCloudFormationFullAccess
+# aws iam attach-user-policy --user-name spirited_travel_Africa --policy-arn arn:aws:iam::aws:policy/AmazonSSMFullAccess
+# aws iam attach-user-policy --user-name spirited_travel_Africa --policy-arn arn:aws:iam::aws:policy/IAMFullAccess

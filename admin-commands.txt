@@ -1,0 +1,39 @@
+# Admin Commands for Spirited Travels Africa - Single User Account
+
+## Current Situation
+- You are the sole admin of AWS account 743508003148
+- User: spirited_travel_Africa 
+- No other users have access
+- Account is secure under your control
+
+## Add These AWS Managed Policies (via AWS Console)
+1. AWSCloudFormationFullAccess
+2. AmazonSSMFullAccess  
+3. IAMFullAccess
+
+## After Adding Permissions, Run These Commands:
+
+# 1. Bootstrap CDK (sets up deployment infrastructure)
+npx cdk bootstrap aws://743508003148/us-east-1
+
+# 2. Deploy Amplify backend
+npx @aws-amplify/backend-cli sandbox --dir-to-watch amplify
+
+# 3. Test backend deployment worked
+aws amplify list-apps
+aws cognito-idp list-user-pools --max-results 10
+aws dynamodb list-tables
+
+## Your App Will Then Have:
+- User authentication (Cognito)
+- Database (DynamoDB) 
+- API (GraphQL)
+- File storage (S3)
+- User registration/login system
+
+## S3 Commands (for mobile app distribution)
+# Create the policy
+aws iam create-policy --policy-name SpiritedTravelsS3FullAccess --policy-document file://iam-s3-policy.json
+
+# Attach it to your user
+aws iam attach-user-policy --user-name spirited_travel_Africa --policy-arn arn:aws:iam::743508003148:policy/SpiritedTravelsS3FullAccess

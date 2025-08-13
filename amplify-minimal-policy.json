@@ -1,0 +1,106 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AmplifySSMAccess",
+      "Effect": "Allow",
+      "Action": [
+        "ssm:GetParameter",
+        "ssm:GetParameters",
+        "ssm:PutParameter"
+      ],
+      "Resource": [
+        "arn:aws:ssm:us-east-1:743508003148:parameter/cdk-bootstrap/*",
+        "arn:aws:ssm:us-east-1:743508003148:parameter/amplify/*"
+      ]
+    },
+    {
+      "Sid": "AmplifyCloudFormationAccess",
+      "Effect": "Allow",
+      "Action": [
+        "cloudformation:CreateStack",
+        "cloudformation:UpdateStack",
+        "cloudformation:DeleteStack",
+        "cloudformation:DescribeStacks",
+        "cloudformation:DescribeStackEvents",
+        "cloudformation:DescribeStackResources",
+        "cloudformation:CreateChangeSet",
+        "cloudformation:DescribeChangeSet",
+        "cloudformation:ExecuteChangeSet",
+        "cloudformation:DeleteChangeSet",
+        "cloudformation:GetTemplate"
+      ],
+      "Resource": [
+        "arn:aws:cloudformation:us-east-1:743508003148:stack/CDKToolkit/*",
+        "arn:aws:cloudformation:us-east-1:743508003148:stack/amplify-*"
+      ]
+    },
+    {
+      "Sid": "AmplifyServiceAccess",
+      "Effect": "Allow",
+      "Action": [
+        "cognito-idp:*",
+        "dynamodb:*",
+        "lambda:*",
+        "apigateway:*",
+        "appsync:*",
+        "logs:*"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "StringLike": {
+          "aws:RequestedRegion": "us-east-1"
+        }
+      }
+    },
+    {
+      "Sid": "AmplifyS3Access", 
+      "Effect": "Allow",
+      "Action": [
+        "s3:CreateBucket",
+        "s3:DeleteBucket",
+        "s3:GetBucketLocation",
+        "s3:GetBucketPolicy",
+        "s3:PutBucketPolicy",
+        "s3:GetObject",
+        "s3:PutObject",
+        "s3:DeleteObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::amplify-*",
+        "arn:aws:s3:::amplify-*/*",
+        "arn:aws:s3:::cdk-*",
+        "arn:aws:s3:::cdk-*/*"
+      ]
+    },
+    {
+      "Sid": "AmplifyIAMAccess",
+      "Effect": "Allow", 
+      "Action": [
+        "iam:CreateRole",
+        "iam:DeleteRole",
+        "iam:GetRole",
+        "iam:PassRole",
+        "iam:AttachRolePolicy",
+        "iam:DetachRolePolicy",
+        "iam:PutRolePolicy",
+        "iam:DeleteRolePolicy"
+      ],
+      "Resource": [
+        "arn:aws:iam::743508003148:role/amplify-*",
+        "arn:aws:iam::743508003148:role/cdk-*"
+      ]
+    },
+    {
+      "Sid": "AmplifySTSAccess",
+      "Effect": "Allow",
+      "Action": [
+        "sts:AssumeRole"
+      ],
+      "Resource": [
+        "arn:aws:iam::743508003148:role/cdk-*",
+        "arn:aws:iam::743508003148:role/amplify-*"
+      ]
+    }
+  ]
+}

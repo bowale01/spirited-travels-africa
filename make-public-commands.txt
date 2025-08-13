@@ -1,0 +1,15 @@
+# After fixing IAM permissions, run these commands:
+
+# 1. Remove public access blocks
+aws s3api put-public-access-block --bucket spirited-travels-africa-mobile-app --public-access-block-configuration "BlockPublicAcls=false,IgnorePublicAcls=false,BlockPublicPolicy=false,RestrictPublicBuckets=false"
+
+# 2. Apply public read policy  
+aws s3api put-bucket-policy --bucket spirited-travels-africa-mobile-app --policy file://bucket-policy.json
+
+# 3. Test if it worked
+aws s3api get-bucket-policy --bucket spirited-travels-africa-mobile-app
+
+# 4. Your app will then be available at these permanent URLs:
+# Main download page: https://spirited-travels-africa-mobile-app.s3.us-east-1.amazonaws.com/download.html
+# Android: https://spirited-travels-africa-mobile-app.s3.us-east-1.amazonaws.com/installers/android/
+# iOS: https://spirited-travels-africa-mobile-app.s3.us-east-1.amazonaws.com/installers/ios/

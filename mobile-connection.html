@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spirited Travels Africa - Mobile Connection</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            padding: 20px; 
+            background: linear-gradient(135deg, #FF8C42, #FFD700);
+        }
+        .container { 
+            max-width: 400px; 
+            margin: 0 auto; 
+            background: white; 
+            padding: 30px; 
+            border-radius: 15px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 { color: #FF8C42; margin-bottom: 20px; }
+        .connection-method { 
+            margin: 20px 0; 
+            padding: 15px; 
+            background: #f9f9f9; 
+            border-radius: 10px; 
+            border-left: 4px solid #FF8C42;
+        }
+        .url { 
+            background: #333; 
+            color: white; 
+            padding: 10px; 
+            border-radius: 5px; 
+            font-family: monospace; 
+            margin: 10px 0;
+            word-break: break-all;
+        }
+        .button { 
+            display: inline-block; 
+            background: #FF8C42; 
+            color: white; 
+            padding: 12px 24px; 
+            text-decoration: none; 
+            border-radius: 8px; 
+            margin: 10px;
+        }
+        .qr-large {
+            font-family: monospace;
+            font-size: 8px;
+            line-height: 8px;
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌍 Connect to Your Travel App</h1>
+        
+        <div class="connection-method">
+            <h3>📱 Method 1: Direct URL</h3>
+            <p>Open Expo Go → Enter URL manually:</p>
+            <div class="url">exp://192.168.1.59:8081</div>
+        </div>
+        
+        <div class="connection-method">
+            <h3>🌐 Method 2: Web Browser</h3>
+            <p>Open your phone's browser:</p>
+            <div class="url">http://192.168.1.59:8081</div>
+            <p>Then tap "Open with Expo Go"</p>
+        </div>
+        
+        <div class="connection-method">
+            <h3>🔗 Method 3: Alternative URLs</h3>
+            <p>If tunnel is working, try:</p>
+            <div class="url">Check terminal for tunnel URL</div>
+        </div>
+        
+        <div style="margin-top: 30px; padding: 15px; background: #e8f5e8; border-radius: 10px;">
+            <h3>✅ What You'll Test:</h3>
+            <ul style="text-align: left;">
+                <li>🔐 User registration with email</li>
+                <li>📧 Email verification system</li>
+                <li>👤 Profile creation</li>
+                <li>✈️ Trip planning features</li>
+                <li>☁️ AWS backend integration</li>
+            </ul>
+        </div>
+        
+        <p style="margin-top: 20px; color: #666;">
+            Your complete travel companion app is ready to test!
+        </p>
+    </div>
+</body>
+</html>

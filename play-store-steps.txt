@@ -1,0 +1,33 @@
+# Google Play Store vs CloudFront Distribution
+
+## Current CloudFront Setup:
+- Direct download: https://d3oizrvu0zqcqz.cloudfront.net/
+- Purpose: Immediate access, no app store needed
+- Users manually install APK files
+
+## Google Play Store Submission:
+CloudFront and Play Store are SEPARATE - you need both!
+
+# Google Play Store Release Steps:
+
+# 1. Install EAS CLI (if not already installed)
+npm install -g @expo/eas-cli
+
+# 2. Login to EAS
+eas login
+
+# 3. Build for Play Store (creates AAB file)
+eas build --platform android --profile production
+
+# 4. Download the AAB file when build completes
+# (EAS will provide download link)
+
+# 5. Upload AAB to Google Play Console:
+# - Go to https://play.google.com/console/
+# - Create new app or select existing
+# - Upload AAB file
+# - Fill in store listing details
+# - Submit for review
+
+# Alternative: Auto-submit to Play Store
+# eas submit --platform android --profile production

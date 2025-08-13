@@ -1,0 +1,17 @@
+{
+  "appName": "Spirited Travels Africa",
+  "version": "1.0.0",
+  "platform": "android",
+  "buildType": "release",
+  "bundleId": "com.spiritedtravels.africa",
+  "description": "African travel companion app with beautiful sunset theme",
+  "installInstructions": "Download and install this app bundle on your Android device",
+  "features": [
+    "Explore Egypt's ancient wonders",
+    "Discover Kenya's wildlife safaris", 
+    "Adventure through South Africa",
+    "Beautiful African sunset theme",
+    "Powered by AWS infrastructure"
+  ],
+  "awsDeployment": true
+}
